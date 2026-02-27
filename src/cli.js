@@ -52,6 +52,16 @@ export async function run(argv = process.argv) {
       }
     });
 
+  program
+    .command('serve')
+    .description('Start the web interface for building exhibition pages')
+    .option('-p, --port <number>', 'Port number', '3000')
+    .action(async (options) => {
+      const { startServer } = await import('../web/server.js');
+      const port = parseInt(options.port, 10);
+      startServer(port);
+    });
+
   await program.parseAsync(argv);
 }
 

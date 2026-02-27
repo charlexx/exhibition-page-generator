@@ -1,0 +1,340 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  color: #1a1a1a;
+  background: #f5f5f5;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header */
+.app-header {
+  background: #1a1a1a;
+  color: #fff;
+  padding: 32px 0;
+  margin-bottom: 32px;
+}
+
+.app-header h1 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.app-header p {
+  color: #aaa;
+  font-size: 0.95rem;
+}
+
+/* Form sections */
+.form-section {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+.form-section h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+/* Form groups */
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #444;
+  margin-bottom: 4px;
+}
+
+.required {
+  color: #d32f2f;
+}
+
+.form-group input[type="text"],
+.form-group input[type="url"],
+.form-group input[type="email"],
+.form-group input[type="number"],
+.form-group input[type="date"],
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 0.95rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  transition: border-color 0.2s;
+  font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #1976d2;
+  box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.15);
+}
+
+.form-group input[type="file"] {
+  font-size: 0.875rem;
+  padding: 6px 0;
+}
+
+/* Form row (side-by-side) */
+.form-row {
+  display: flex;
+  gap: 16px;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+/* Array entries (artists, artworks, hours) */
+.array-entry {
+  border: 1px solid #e8e8e8;
+  border-radius: 6px;
+  padding: 16px;
+  margin-bottom: 12px;
+  background: #fafafa;
+}
+
+.entry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.entry-label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.btn-remove {
+  background: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: #999;
+  font-size: 1.2rem;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  line-height: 1;
+}
+
+.btn-remove:hover:not(:disabled) {
+  border-color: #d32f2f;
+  color: #d32f2f;
+  background: #fff5f5;
+}
+
+.btn-remove:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* Add buttons */
+.btn-add {
+  display: inline-block;
+  padding: 8px 16px;
+  font-size: 0.875rem;
+  color: #1976d2;
+  background: none;
+  border: 1px dashed #1976d2;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-family: inherit;
+}
+
+.btn-add:hover {
+  background: #e3f2fd;
+}
+
+/* Collapsible sections */
+.collapsible .collapsible-toggle {
+  cursor: pointer;
+  user-select: none;
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.collapsible .collapsible-toggle:hover {
+  color: #1976d2;
+}
+
+.toggle-arrow {
+  display: inline-block;
+  font-size: 0.75rem;
+  transition: transform 0.2s;
+  margin-right: 4px;
+}
+
+.collapsible-toggle[aria-expanded="true"] .toggle-arrow {
+  transform: rotate(90deg);
+}
+
+.optional-label {
+  font-weight: 400;
+  color: #999;
+  font-size: 0.85rem;
+}
+
+.collapsible-content {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid #eee;
+}
+
+/* Action buttons */
+.form-actions {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.btn {
+  padding: 12px 32px;
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s, opacity 0.2s;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: #1976d2;
+  color: #fff;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #1565c0;
+}
+
+.btn-secondary {
+  background: #333;
+  color: #fff;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: #222;
+}
+
+/* Error container */
+.error-container {
+  background: #fff5f5;
+  border: 1px solid #e57373;
+  border-radius: 8px;
+  padding: 16px 24px;
+  margin-bottom: 20px;
+}
+
+.error-container h3 {
+  color: #c62828;
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+}
+
+.error-container ul {
+  list-style: none;
+  padding: 0;
+}
+
+.error-container li {
+  color: #b71c1c;
+  font-size: 0.875rem;
+  padding: 2px 0;
+}
+
+/* Preview section */
+.preview-section {
+  margin-bottom: 40px;
+}
+
+.preview-section h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #333;
+}
+
+#preview-iframe {
+  width: 100%;
+  height: 80vh;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+}
+
+/* Footer */
+.app-footer {
+  border-top: 1px solid #e0e0e0;
+  padding: 20px 0;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.app-footer p {
+  color: #999;
+  font-size: 0.85rem;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .container {
+    padding: 0 12px;
+  }
+
+  .form-section {
+    padding: 16px;
+  }
+}

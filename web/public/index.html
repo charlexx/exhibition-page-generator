@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exhibition Page Generator</title>
+  <link rel="stylesheet" href="/public/form.css">
+</head>
+<body>
+  <header class="app-header">
+    <div class="container">
+      <h1>Exhibition Page Generator</h1>
+      <p>Create a polished exhibition web page. Fill in the fields below, preview your page, and download it.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <form id="exhibitionForm" novalidate>
+
+      <!-- Exhibition Details -->
+      <section class="form-section">
+        <h2>Exhibition Details</h2>
+        <div class="form-group">
+          <label for="title">Title <span class="required">*</span></label>
+          <input type="text" id="title" name="title" required maxlength="200" placeholder="e.g. Luminous Depths">
+        </div>
+        <div class="form-group">
+          <label for="subtitle">Subtitle</label>
+          <input type="text" id="subtitle" name="subtitle" maxlength="300" placeholder="e.g. An exploration of light and shadow">
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea id="description" name="description" maxlength="5000" rows="4" placeholder="Describe the exhibition..."></textarea>
+        </div>
+      </section>
+
+      <!-- Dates -->
+      <section class="form-section">
+        <h2>Dates</h2>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="dates.start">Start Date <span class="required">*</span></label>
+            <input type="date" id="dates.start" name="dates.start" required>
+          </div>
+          <div class="form-group">
+            <label for="dates.end">End Date <span class="required">*</span></label>
+            <input type="date" id="dates.end" name="dates.end" required>
+          </div>
+        </div>
+      </section>
+
+      <!-- Venue -->
+      <section class="form-section">
+        <h2>Venue</h2>
+        <div class="form-group">
+          <label for="venue.name">Venue Name <span class="required">*</span></label>
+          <input type="text" id="venue.name" name="venue.name" required maxlength="200" placeholder="e.g. Whitfield Contemporary">
+        </div>
+        <div class="form-group">
+          <label for="venue.address">Address</label>
+          <input type="text" id="venue.address" name="venue.address" maxlength="300" placeholder="e.g. 42 Rivington Street">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="venue.city">City</label>
+            <input type="text" id="venue.city" name="venue.city" maxlength="100" placeholder="e.g. London">
+          </div>
+          <div class="form-group">
+            <label for="venue.state">State / Region</label>
+            <input type="text" id="venue.state" name="venue.state" maxlength="100">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="venue.postalCode">Postal Code</label>
+            <input type="text" id="venue.postalCode" name="venue.postalCode" maxlength="20">
+          </div>
+          <div class="form-group">
+            <label for="venue.country">Country</label>
+            <input type="text" id="venue.country" name="venue.country" maxlength="100">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="venue.website">Website URL</label>
+          <input type="url" id="venue.website" name="venue.website" placeholder="https://...">
+        </div>
+        <div class="form-group">
+          <label for="venue.mapUrl">Map URL</label>
+          <input type="url" id="venue.mapUrl" name="venue.mapUrl" placeholder="https://maps.google.com/...">
+        </div>
+      </section>
+
+      <!-- Artists -->
+      <section class="form-section">
+        <h2>Artists</h2>
+        <div id="artists-container">
+          <div class="array-entry" data-index="0">
+            <div class="entry-header">
+              <span class="entry-label">Artist #1</span>
+              <button type="button" class="btn-remove" data-target="artists" title="Remove artist" disabled>&times;</button>
+            </div>
+            <div class="form-group">
+              <label>Name <span class="required">*</span></label>
+              <input type="text" name="artists[0].name" required maxlength="200" class="artist-name-input" placeholder="Artist name">
+            </div>
+            <div class="form-group">
+              <label>Bio</label>
+              <textarea name="artists[0].bio" maxlength="2000" rows="3" placeholder="Artist biography..."></textarea>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Nationality</label>
+                <input type="text" name="artists[0].nationality" maxlength="100">
+              </div>
+              <div class="form-group">
+                <label>Birth Year</label>
+                <input type="number" name="artists[0].birthYear" min="1000" max="2100">
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Website</label>
+              <input type="url" name="artists[0].website" placeholder="https://...">
+            </div>
+            <div class="form-group">
+              <label>Photo (upload)</label>
+              <input type="file" name="artist_photo_0" accept=".jpg,.jpeg,.png,.gif,.webp,.svg,.avif">
+            </div>
+            <div class="form-group">
+              <label>Photo URL (or enter a URL instead)</label>
+              <input type="url" name="artists[0].photoUrl" placeholder="https://...">
+            </div>
+          </div>
+        </div>
+        <button type="button" class="btn-add" id="add-artist">+ Add Another Artist</button>
+      </section>
+
+      <!-- Artworks -->
+      <section class="form-section">
+        <h2>Artworks</h2>
+        <div id="artworks-container">
+          <div class="array-entry" data-index="0">
+            <div class="entry-header">
+              <span class="entry-label">Artwork #1</span>
+              <button type="button" class="btn-remove" data-target="artworks" title="Remove artwork" disabled>&times;</button>
+            </div>
+            <div class="form-group">
+              <label>Title <span class="required">*</span></label>
+              <input type="text" name="artworks[0].title" required maxlength="300" placeholder="Artwork title">
+            </div>
+            <div class="form-group">
+              <label>Artist</label>
+              <select name="artworks[0].artist" class="artwork-artist-select">
+                <option value="">-- Select artist --</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Year</label>
+                <input type="text" name="artworks[0].year" maxlength="50" placeholder="e.g. 2025 or 2024-2025">
+              </div>
+              <div class="form-group">
+                <label>Medium</label>
+                <input type="text" name="artworks[0].medium" maxlength="300" placeholder="e.g. Oil on canvas">
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Dimensions</label>
+              <input type="text" name="artworks[0].dimensions" maxlength="200" placeholder="e.g. 180 x 240 cm">
+            </div>
+            <div class="form-group">
+              <label>Description</label>
+              <textarea name="artworks[0].description" maxlength="3000" rows="2" placeholder="Artwork description..."></textarea>
+            </div>
+            <div class="form-group">
+              <label>Price (internal only, not displayed)</label>
+              <input type="text" name="artworks[0].price" maxlength="100" placeholder="e.g. $5,000">
+            </div>
+            <div class="form-group">
+              <label>Image (upload)</label>
+              <input type="file" name="artwork_image_0" accept=".jpg,.jpeg,.png,.gif,.webp,.svg,.avif">
+            </div>
+            <div class="form-group">
+              <label>Image URL (or enter a URL instead)</label>
+              <input type="url" name="artworks[0].imageUrl" placeholder="https://...">
+            </div>
+          </div>
+        </div>
+        <button type="button" class="btn-add" id="add-artwork">+ Add Another Artwork</button>
+      </section>
+
+      <!-- Curator (collapsible) -->
+      <section class="form-section collapsible">
+        <h2 class="collapsible-toggle" tabindex="0" role="button" aria-expanded="false">
+          <span class="toggle-arrow">&#9654;</span> Curator <span class="optional-label">(optional)</span>
+        </h2>
+        <div class="collapsible-content" hidden>
+          <div class="form-group">
+            <label for="curator.name">Curator Name</label>
+            <input type="text" id="curator.name" name="curator.name" maxlength="200">
+          </div>
+          <div class="form-group">
+            <label for="curator.bio">Curator Bio</label>
+            <textarea id="curator.bio" name="curator.bio" maxlength="2000" rows="3"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Photo (upload)</label>
+            <input type="file" name="curator_photo" accept=".jpg,.jpeg,.png,.gif,.webp,.svg,.avif">
+          </div>
+          <div class="form-group">
+            <label for="curator.photoUrl">Photo URL</label>
+            <input type="url" id="curator.photoUrl" name="curator.photoUrl" placeholder="https://...">
+          </div>
+        </div>
+      </section>
+
+      <!-- Opening Hours (collapsible) -->
+      <section class="form-section collapsible">
+        <h2 class="collapsible-toggle" tabindex="0" role="button" aria-expanded="false">
+          <span class="toggle-arrow">&#9654;</span> Opening Hours <span class="optional-label">(optional)</span>
+        </h2>
+        <div class="collapsible-content" hidden>
+          <div id="hours-container"></div>
+          <button type="button" class="btn-add" id="add-hours">+ Add Hours Entry</button>
+        </div>
+      </section>
+
+      <!-- Admission (collapsible) -->
+      <section class="form-section collapsible">
+        <h2 class="collapsible-toggle" tabindex="0" role="button" aria-expanded="false">
+          <span class="toggle-arrow">&#9654;</span> Admission <span class="optional-label">(optional)</span>
+        </h2>
+        <div class="collapsible-content" hidden>
+          <div class="form-group">
+            <label for="admission.general">General</label>
+            <input type="text" id="admission.general" name="admission.general" maxlength="200" placeholder="e.g. $15">
+          </div>
+          <div class="form-group">
+            <label for="admission.concession">Concession</label>
+            <input type="text" id="admission.concession" name="admission.concession" maxlength="200" placeholder="e.g. $10">
+          </div>
+          <div class="form-group">
+            <label for="admission.children">Children</label>
+            <input type="text" id="admission.children" name="admission.children" maxlength="200" placeholder="e.g. Free (under 16)">
+          </div>
+          <div class="form-group">
+            <label for="admission.notes">Notes</label>
+            <textarea id="admission.notes" name="admission.notes" maxlength="500" rows="2" placeholder="e.g. Free admission on first Sunday of each month"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact & Links -->
+      <section class="form-section">
+        <h2>Contact &amp; Links</h2>
+        <div class="form-group">
+          <label for="inquiryEmail">Inquiry Email</label>
+          <input type="email" id="inquiryEmail" name="inquiryEmail" placeholder="gallery@example.com">
+        </div>
+        <div class="form-group">
+          <label for="links.website">Website URL</label>
+          <input type="url" id="links.website" name="links.website" placeholder="https://...">
+        </div>
+        <div class="form-group">
+          <label for="links.instagram">Instagram URL</label>
+          <input type="url" id="links.instagram" name="links.instagram" placeholder="https://instagram.com/...">
+        </div>
+        <div class="form-group">
+          <label for="links.twitter">Twitter / X URL</label>
+          <input type="url" id="links.twitter" name="links.twitter" placeholder="https://twitter.com/...">
+        </div>
+        <div class="form-group">
+          <label for="links.facebook">Facebook URL</label>
+          <input type="url" id="links.facebook" name="links.facebook" placeholder="https://facebook.com/...">
+        </div>
+        <div class="form-group">
+          <label for="links.ticketing">Ticketing URL</label>
+          <input type="url" id="links.ticketing" name="links.ticketing" placeholder="https://...">
+        </div>
+      </section>
+
+      <!-- Theme -->
+      <section class="form-section">
+        <h2>Theme</h2>
+        <div class="form-group">
+          <label for="theme">Theme</label>
+          <select id="theme" name="theme">
+            <option value="light" selected>Light</option>
+            <option value="dark">Dark</option>
+            <option value="minimal">Minimal</option>
+          </select>
+        </div>
+      </section>
+
+      <!-- Actions -->
+      <section class="form-actions">
+        <button type="button" id="btn-preview" class="btn btn-primary">Preview</button>
+        <button type="button" id="btn-download" class="btn btn-secondary">Download</button>
+      </section>
+
+      <!-- Validation Errors -->
+      <div id="error-container" class="error-container" hidden>
+        <h3>Validation Errors</h3>
+        <ul id="error-list"></ul>
+      </div>
+
+    </form>
+
+    <!-- Preview -->
+    <section id="preview-section" class="preview-section" hidden>
+      <h2>Preview</h2>
+      <iframe id="preview-iframe" sandbox="allow-same-origin" title="Exhibition preview"></iframe>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <div class="container">
+      <p>Exhibition Page Generator</p>
+    </div>
+  </footer>
+
+  <script src="/public/form.js"></script>
+</body>
+</html>
