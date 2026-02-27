@@ -4,6 +4,7 @@ import { Command } from 'commander';
 import { validate } from './validator.js';
 import { processImages } from './imageProcessor.js';
 import { generateHtml } from './htmlGenerator.js';
+import { runInteractive } from './interactive.js';
 
 const pkg = JSON.parse(
   await readFile(new URL('../package.json', import.meta.url), 'utf-8')
@@ -24,6 +25,27 @@ export async function run(argv = process.argv) {
       try {
         await generate(input, options);
       } catch (err) {
+        console.error(`Error: ${err.message}`);
+        process.exit(1);
+      }
+    });
+
+  program
+    .command('init')
+    .description('Interactive wizard to create exhibition JSON')
+    .option('-o, --output <file>', 'Output JSON file path', 'exhibition.json')
+    .option('--no-generate', 'Skip HTML generation after creating JSON')
+    .action(async (options) => {
+      try {
+        await runInteractive({
+          output: options.output,
+          generate: options.generate,
+        });
+      } catch (err) {
+        if (err.name === 'ExitPromptError') {
+          console.log('\nAborted.');
+          process.exit(0);
+        }
         console.error(`Error: ${err.message}`);
         process.exit(1);
       }
