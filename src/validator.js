@@ -22,9 +22,21 @@ export async function validate(data) {
 
   if (!valid) {
     const errors = ajv.errors.map((err) => {
-      const path = err.instancePath || '/';
-      return `  ${path}: ${err.message}`;
+      const fieldPath = err.instancePath || '/';
+      return `  ${fieldPath}: ${err.message}`;
     });
+    return { valid: false, errors };
+  }
+
+  // Cross-field validation: end date must not be before start date
+  const errors = [];
+  if (data.dates?.start && data.dates?.end) {
+    if (data.dates.end < data.dates.start) {
+      errors.push('  /dates: end date must not be before start date');
+    }
+  }
+
+  if (errors.length > 0) {
     return { valid: false, errors };
   }
 

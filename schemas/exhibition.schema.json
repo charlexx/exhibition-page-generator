@@ -7,13 +7,16 @@
   "properties": {
     "title": {
       "type": "string",
-      "minLength": 1
+      "minLength": 1,
+      "maxLength": 200
     },
     "subtitle": {
-      "type": "string"
+      "type": "string",
+      "maxLength": 300
     },
     "description": {
-      "type": "string"
+      "type": "string",
+      "maxLength": 5000
     },
     "dates": {
       "type": "object",
@@ -37,22 +40,28 @@
       "properties": {
         "name": {
           "type": "string",
-          "minLength": 1
+          "minLength": 1,
+          "maxLength": 200
         },
         "address": {
-          "type": "string"
+          "type": "string",
+          "maxLength": 300
         },
         "city": {
-          "type": "string"
+          "type": "string",
+          "maxLength": 100
         },
         "state": {
-          "type": "string"
+          "type": "string",
+          "maxLength": 100
         },
         "postalCode": {
-          "type": "string"
+          "type": "string",
+          "maxLength": 20
         },
         "country": {
-          "type": "string"
+          "type": "string",
+          "maxLength": 100
         },
         "website": {
           "type": "string",
@@ -75,10 +84,12 @@
         "properties": {
           "name": {
             "type": "string",
-            "minLength": 1
+            "minLength": 1,
+            "maxLength": 200
           },
           "bio": {
-            "type": "string"
+            "type": "string",
+            "maxLength": 2000
           },
           "photo": {
             "type": "string"
@@ -88,10 +99,13 @@
             "format": "uri"
           },
           "nationality": {
-            "type": "string"
+            "type": "string",
+            "maxLength": 100
           },
           "birthYear": {
-            "type": "integer"
+            "type": "integer",
+            "minimum": 1000,
+            "maximum": 2100
           }
         }
       }
@@ -99,6 +113,7 @@
     "artworks": {
       "type": "array",
       "minItems": 1,
+      "maxItems": 200,
       "items": {
         "type": "object",
         "required": ["title"],
@@ -106,31 +121,37 @@
         "properties": {
           "title": {
             "type": "string",
-            "minLength": 1
+            "minLength": 1,
+            "maxLength": 300
           },
           "artist": {
-            "type": "string"
+            "type": "string",
+            "maxLength": 200
           },
           "year": {
             "oneOf": [
               { "type": "integer" },
-              { "type": "string" }
+              { "type": "string", "maxLength": 50 }
             ]
           },
           "medium": {
-            "type": "string"
+            "type": "string",
+            "maxLength": 300
           },
           "dimensions": {
-            "type": "string"
+            "type": "string",
+            "maxLength": 200
           },
           "image": {
             "type": "string"
           },
           "description": {
-            "type": "string"
+            "type": "string",
+            "maxLength": 3000
           },
           "price": {
-            "type": "string"
+            "type": "string",
+            "maxLength": 100
           }
         }
       }
@@ -140,10 +161,12 @@
       "additionalProperties": false,
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "maxLength": 200
         },
         "bio": {
-          "type": "string"
+          "type": "string",
+          "maxLength": 2000
         },
         "photo": {
           "type": "string"
@@ -152,15 +175,18 @@
     },
     "openingHours": {
       "type": "array",
+      "maxItems": 20,
       "items": {
         "type": "object",
         "additionalProperties": false,
         "properties": {
           "days": {
-            "type": "string"
+            "type": "string",
+            "maxLength": 100
           },
           "hours": {
-            "type": "string"
+            "type": "string",
+            "maxLength": 100
           }
         }
       }
@@ -170,16 +196,20 @@
       "additionalProperties": false,
       "properties": {
         "general": {
-          "type": "string"
+          "type": "string",
+          "maxLength": 200
         },
         "concession": {
-          "type": "string"
+          "type": "string",
+          "maxLength": 200
         },
         "children": {
-          "type": "string"
+          "type": "string",
+          "maxLength": 200
         },
         "notes": {
-          "type": "string"
+          "type": "string",
+          "maxLength": 500
         }
       }
     },

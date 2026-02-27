@@ -2,6 +2,16 @@ import { copyFile, mkdir } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
 
+const ALLOWED_IMAGE_EXTENSIONS = new Set([
+  '.jpg',
+  '.jpeg',
+  '.png',
+  '.gif',
+  '.webp',
+  '.svg',
+  '.avif',
+]);
+
 function isUrl(str) {
   return str.startsWith('http://') || str.startsWith('https://');
 }
@@ -11,6 +21,21 @@ async function processImageField(imagePath, inputDir, outputDir, verbose) {
   if (isUrl(imagePath)) return imagePath;
 
   const absPath = path.resolve(inputDir, imagePath);
+  const absInput = path.resolve(inputDir);
+
+  // Path traversal guard: resolved path must stay within inputDir
+  if (!absPath.startsWith(absInput + path.sep) && absPath !== absInput) {
+    console.warn(`  Warning: Image path escapes input directory, skipping: ${imagePath}`);
+    return null;
+  }
+
+  // Extension allowlist
+  const ext = path.extname(absPath).toLowerCase();
+  if (!ALLOWED_IMAGE_EXTENSIONS.has(ext)) {
+    console.warn(`  Warning: Unsupported image type "${ext}", skipping: ${imagePath}`);
+    return null;
+  }
+
   if (!existsSync(absPath)) {
     console.warn(`  Warning: Image not found: ${absPath}`);
     return null;

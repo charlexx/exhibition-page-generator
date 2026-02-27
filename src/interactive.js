@@ -365,6 +365,7 @@ export async function runInteractive(options = {}) {
 
     if (shouldGenerate) {
       const { validate } = await import('./validator.js');
+      const { sanitizeData } = await import('./sanitizer.js');
       const { processImages } = await import('./imageProcessor.js');
       const { generateHtml } = await import('./htmlGenerator.js');
       const { writeFile: wf, mkdir } = await import('node:fs/promises');
@@ -379,8 +380,13 @@ export async function runInteractive(options = {}) {
       const inputDir = path.dirname(outPath);
       const outputDir = path.resolve('./output');
 
-      const processed = await processImages(data, inputDir, outputDir, false);
-      const html = generateHtml(processed, data.theme || 'light');
+      const { data: sanitized, warnings } = sanitizeData(data, inputDir);
+      if (warnings.length > 0) {
+        warnings.forEach((w) => console.warn(`  Warning: ${w}`));
+      }
+
+      const processed = await processImages(sanitized, inputDir, outputDir, false);
+      const html = generateHtml(processed, sanitized.theme || 'light');
 
       await mkdir(outputDir, { recursive: true });
       const htmlPath = path.join(outputDir, 'index.html');

@@ -2,6 +2,7 @@ import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import path from 'node:path';
 import { Command } from 'commander';
 import { validate } from './validator.js';
+import { sanitizeData } from './sanitizer.js';
 import { processImages } from './imageProcessor.js';
 import { generateHtml } from './htmlGenerator.js';
 import { runInteractive } from './interactive.js';
@@ -86,27 +87,34 @@ async function generate(inputPath, options) {
     process.exit(1);
   }
 
-  // 3. Resolve theme
-  const theme = cliTheme !== 'light' ? cliTheme : data.theme || 'light';
+  // 3. Sanitize
+  if (verbose) console.log('Sanitizing...');
+  const { data: sanitized, warnings } = sanitizeData(data, inputDir);
+  if (warnings.length > 0) {
+    warnings.forEach((w) => console.warn(`  Warning: ${w}`));
+  }
+
+  // 4. Resolve theme
+  const theme = cliTheme !== 'light' ? cliTheme : sanitized.theme || 'light';
   if (verbose) console.log(`Theme: ${theme}`);
 
-  // 4. Process images
+  // 5. Process images
   const absOutput = path.resolve(outputDir);
   if (verbose) console.log('Processing images...');
-  const processed = await processImages(data, inputDir, absOutput, verbose);
+  const processed = await processImages(sanitized, inputDir, absOutput, verbose);
 
-  // 5. Generate HTML
+  // 6. Generate HTML
   if (verbose) console.log('Generating HTML...');
   const html = generateHtml(processed, theme);
 
-  // 6. Write output
+  // 7. Write output
   await mkdir(absOutput, { recursive: true });
   const outputPath = path.join(absOutput, 'index.html');
   await writeFile(outputPath, html, 'utf-8');
 
   console.log(`Generated: ${outputPath}`);
-  console.log(`  Title: ${data.title}`);
+  console.log(`  Title: ${sanitized.title}`);
   console.log(`  Theme: ${theme}`);
-  console.log(`  Artists: ${data.artists.length}`);
-  console.log(`  Artworks: ${data.artworks.length}`);
+  console.log(`  Artists: ${sanitized.artists.length}`);
+  console.log(`  Artworks: ${sanitized.artworks.length}`);
 }
