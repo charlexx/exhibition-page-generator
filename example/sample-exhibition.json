@@ -1,0 +1,136 @@
+{
+  "title": "Luminous Depths",
+  "subtitle": "An exploration of light, shadow, and the spaces between",
+  "description": "Luminous Depths brings together five contemporary artists whose work interrogates the boundaries between the visible and the unseen. Through painting, sculpture, and installation, these artists invite viewers to consider how light shapes our perception of space, memory, and emotion.\n\nThis exhibition marks the first time these artists have shown together, creating a dialogue that spans continents and artistic traditions. Each work responds to the gallery's unique architecture, transforming familiar spaces into realms of contemplation and wonder.",
+  "dates": {
+    "start": "2026-03-15",
+    "end": "2026-06-28"
+  },
+  "venue": {
+    "name": "Whitfield Contemporary",
+    "address": "42 Rivington Street",
+    "city": "London",
+    "state": "Greater London",
+    "postalCode": "EC2A 3LX",
+    "country": "United Kingdom",
+    "website": "https://www.whitfieldcontemporary.com",
+    "mapUrl": "https://maps.google.com/?q=42+Rivington+Street+London"
+  },
+  "artists": [
+    {
+      "name": "Amara Osei",
+      "bio": "Amara Osei's large-scale paintings explore the interplay of natural and artificial light. Her work draws on West African textile traditions and contemporary color theory.",
+      "nationality": "Ghanaian-British",
+      "birthYear": 1988,
+      "website": "https://www.amaraosei.com"
+    },
+    {
+      "name": "Kenji Watanabe",
+      "bio": "Working primarily in steel and glass, Watanabe creates kinetic sculptures that fragment and redirect ambient light. His installations have been exhibited at museums across Asia and Europe.",
+      "nationality": "Japanese",
+      "birthYear": 1975
+    },
+    {
+      "name": "Sofia Reyes",
+      "bio": "Reyes combines photography and mixed media to investigate urban landscapes at twilight. Her work captures the liminal quality of cities transitioning between day and night.",
+      "nationality": "Mexican-American",
+      "birthYear": 1992
+    },
+    {
+      "name": "Lars Eriksson",
+      "bio": "Eriksson's minimalist installations use fiber optics and projection to create immersive environments that respond to viewer movement.",
+      "nationality": "Swedish",
+      "birthYear": 1980
+    },
+    {
+      "name": "Priya Sharma",
+      "bio": "Sharma's watercolors and ink drawings explore bioluminescence and the light produced by living organisms. Her scientific background informs her deeply detailed approach.",
+      "nationality": "Indian",
+      "birthYear": 1985,
+      "website": "https://www.priyasharmaart.com"
+    }
+  ],
+  "artworks": [
+    {
+      "title": "Golden Hour (Accra)",
+      "artist": "Amara Osei",
+      "year": 2025,
+      "medium": "Oil and gold leaf on canvas",
+      "dimensions": "180 × 240 cm",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/The_Fighting_Temeraire%2C_JMW_Turner%2C_National_Gallery.jpg/960px-The_Fighting_Temeraire%2C_JMW_Turner%2C_National_Gallery.jpg",
+      "description": "A monumental painting capturing the warm light of late afternoon in Accra, layered with geometric patterns drawn from kente cloth.",
+      "price": "£28,000"
+    },
+    {
+      "title": "Refraction Study VII",
+      "artist": "Kenji Watanabe",
+      "year": "2024-2025",
+      "medium": "Polished steel, glass prisms, motor",
+      "dimensions": "95 × 95 × 200 cm",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/7/74/Robert_Delaunay_-_Simultaneous_Windows_%282nd_Motif%2C_1st_Part%29_-_1912_-_Solomon_R._Guggenheim_Museum.jpg",
+      "description": "A slowly rotating sculpture that casts prismatic light patterns across the gallery walls, creating an ever-changing environment."
+    },
+    {
+      "title": "Dusk, Avenida Reforma",
+      "artist": "Sofia Reyes",
+      "year": 2025,
+      "medium": "Archival pigment print, acrylic, and neon",
+      "dimensions": "120 × 160 cm",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Van_Gogh_-_Terrasse_des_Caf%C3%A9s_an_der_Place_du_Forum_in_Arles_am_Abend1.jpeg/960px-Van_Gogh_-_Terrasse_des_Caf%C3%A9s_an_der_Place_du_Forum_in_Arles_am_Abend1.jpeg",
+      "description": "A layered photographic work depicting Mexico City's iconic boulevard at the moment streetlights first illuminate.",
+      "price": "£8,500"
+    },
+    {
+      "title": "Threshold (Room for One)",
+      "artist": "Lars Eriksson",
+      "year": 2026,
+      "medium": "Fiber optics, custom software, aluminum",
+      "dimensions": "Variable (room installation)",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Claude_Monet_-_Water_Lilies_-_1906%2C_Ryerson.jpg/960px-Claude_Monet_-_Water_Lilies_-_1906%2C_Ryerson.jpg",
+      "description": "An immersive room-scale installation where thousands of fiber optic threads respond to a single viewer's presence and movement."
+    },
+    {
+      "title": "Abyssal Light Series: Anglerfish",
+      "artist": "Priya Sharma",
+      "year": 2025,
+      "medium": "Watercolor, ink, and phosphorescent pigment on paper",
+      "dimensions": "76 × 56 cm (each, set of 4)",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Tsunami_by_hokusai_19th_century.jpg/960px-Tsunami_by_hokusai_19th_century.jpg",
+      "description": "A quartet of works depicting deep-sea bioluminescent creatures, painted with phosphorescent pigments that glow in darkness.",
+      "price": "£12,000 (set)"
+    },
+    {
+      "title": "Shadow Archive",
+      "artist": "Amara Osei",
+      "year": 2024,
+      "medium": "Charcoal and silver pigment on raw linen",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Rembrandt_van_Rijn_-_Self-Portrait_-_Google_Art_Project.jpg/960px-Rembrandt_van_Rijn_-_Self-Portrait_-_Google_Art_Project.jpg",
+      "dimensions": "200 × 150 cm",
+      "description": "A striking tonal work exploring the absence of light, where silver pigment catches and releases illumination as the viewer moves."
+    }
+  ],
+  "curator": {
+    "name": "Dr. Helena Marchetti",
+    "bio": "Dr. Marchetti is a curator and art historian specializing in contemporary practices around light and space. She previously served as Senior Curator at the Museo d'Arte Contemporanea in Turin."
+  },
+  "inquiryEmail": "gallery@whitfieldcontemporary.com",
+  "openingHours": [
+    { "days": "Tuesday - Friday", "hours": "10:00 AM - 6:00 PM" },
+    { "days": "Saturday", "hours": "11:00 AM - 7:00 PM" },
+    { "days": "Sunday", "hours": "12:00 PM - 5:00 PM" },
+    { "days": "Monday", "hours": "Closed" }
+  ],
+  "admission": {
+    "general": "£12",
+    "concession": "£8",
+    "children": "Free (under 16)",
+    "notes": "Free admission on the first Sunday of each month. Group bookings of 10+ receive 20% discount."
+  },
+  "links": {
+    "website": "https://www.whitfieldcontemporary.com/luminous-depths",
+    "instagram": "https://www.instagram.com/whitfieldcontemporary",
+    "twitter": "https://twitter.com/whitfieldart",
+    "ticketing": "https://www.whitfieldcontemporary.com/tickets"
+  },
+  "theme": "light"
+}

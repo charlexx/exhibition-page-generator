@@ -1,0 +1,22 @@
+{
+  "name": "exhibition-page-generator",
+  "version": "1.0.0",
+  "description": "CLI tool that generates static HTML pages from exhibition JSON data",
+  "type": "module",
+  "bin": {
+    "exhibit": "./bin/exhibit.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "keywords": ["exhibition", "gallery", "html-generator", "static-site", "art"],
+  "license": "MIT",
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
+    "commander": "^12.1.0"
+  }
+}
